@@ -73,7 +73,7 @@ public class Controller implements Initializable {
         Platform.runLater(() -> {
             stage = (Stage) textField.getScene().getWindow();
             stage.setOnCloseRequest(event -> {
-                System.out.println("bye");
+                System.out.println("До свидания");
                 if (socket != null && !socket.isClosed()) {
                     try {
                         out.writeUTF("/end");

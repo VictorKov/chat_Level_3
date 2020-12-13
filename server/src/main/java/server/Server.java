@@ -54,7 +54,7 @@ public class Server {
     }
 
     public void privateMsg(ClientHandler sender, String receiver, String msg) {
-        String message = String.format("[ %s ] private [ %s ] : %s", sender.getNickname(), receiver, msg);
+        String message = String.format("Личное сообщение от %s : %s", sender.getNickname(), msg);
 
         for (ClientHandler c : clients) {
             if (c.getNickname().equals(receiver)) {

@@ -9,13 +9,13 @@
     </stylesheets>
 
 
-    <TextField fx:id="loginField" HBox.hgrow="ALWAYS" promptText="login"/>
-    <PasswordField fx:id="passwordField" HBox.hgrow="ALWAYS" promptText="password"/>
-    <TextField fx:id="nicknameField" HBox.hgrow="ALWAYS" promptText="nickname"/>
+    <TextField fx:id="loginField" HBox.hgrow="ALWAYS" promptText="Логин"/>
+    <PasswordField fx:id="passwordField" HBox.hgrow="ALWAYS" promptText="Пароль"/>
+    <TextField fx:id="nicknameField" HBox.hgrow="ALWAYS" promptText="Ваше тия в чате"/>
     <TextArea fx:id="textArea" editable="false"/>
 
 
-    <Button text="Registration" onAction="#tryToReg"/>
+    <Button text="Зарегистрироваться" onAction="#tryToReg"/>
 
 
 </VBox>
