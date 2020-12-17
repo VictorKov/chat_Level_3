@@ -51,6 +51,7 @@ public class Controller implements Initializable {
     private Stage stage;
     private Stage regStage;
     private RegController regController;
+    private String login;
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
@@ -62,7 +63,11 @@ public class Controller implements Initializable {
         clientList.setVisible(authenticated);
         if (!authenticated) {
             nickname = "";
+            History.stop();
         }
+
+
+
         setTitle(nickname);
         textArea.clear();
     }
@@ -110,6 +115,8 @@ public class Controller implements Initializable {
                             if (str.startsWith("/authok ")) {
                                 nickname = str.split("\\s")[1];
                                 setAuthenticated(true);
+                                textArea.appendText(History.getLast100LinesOfChat(login));
+                                History.start(login);
                                 break;
                             }
 
@@ -146,6 +153,8 @@ public class Controller implements Initializable {
                             //==============//
                         } else {
                             textArea.appendText(str + "\n");
+
+                            History.writeLine(str);
                         }
                     }
                 } catch (RuntimeException e) {
@@ -183,6 +192,8 @@ public class Controller implements Initializable {
             connect();
         }
 
+        login = loginField.getText().trim();
+
         String msg = String.format("/auth %s %s", loginField.getText().trim(), passwordField.getText().trim());
         try {
             out.writeUTF(msg);
@@ -193,9 +204,9 @@ public class Controller implements Initializable {
     }
 
     private void setTitle(String username) {
-        String title = String.format("СпэйсЧат [ %s ]", username);
+        String title = String.format("Учебный Чат [ %s ]", username);
         if (username.equals("")) {
-            title = "СпэйсЧат";
+            title = "Учебный Чат";
         }
         String chatTitle = title;
         Platform.runLater(() -> {
